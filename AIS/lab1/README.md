@@ -245,27 +245,14 @@
 
 ```mermaid
 graph TB
-    Client["Web Browser<br/>http://localhost:8000"]
-    
-    subgraph VM["ВМ на облачной платформе cloud.nstu.ru"]
-        subgraph Compose[" docker-compose"]
-            Backend[" Backend приложение<br/>(Python FastAPI / Node.js Express)"]
-            Postgres[" PostgreSQL 18<br/>port 5432"]
-        end
-    end
-    
-    Client -->|HTTP запросы<br/>GET/POST/PUT/DELETE| Backend
-    Backend -->|SQL запросы| Postgres
-    Postgres -->|результаты| Backend
-    Backend -->|JSON ответы| Client
-    
-    style Client fill:#e1f5ff
-    style Backend fill:#fff3e0
-    style Postgres fill:#f3e5f5
-    style Compose fill:#f0f0f0,stroke:#999,stroke-width:2px
+    user -->|ssh.cloud.nstu.ru:5980| OCAlmaLinux9.4
+    OCAlmaLinux9.4 <--> Nginx
+    user <-->|http://217.71.129.139:4775/browser/| Nginx
+    OCAlmaLinux9.4 <--> pgAdmin4
+    OCAlmaLinux9.4 <--> postgresql
+    Nginx <--> |127.0.0.1:5050| pgAdmin4
+    pgAdmin4 <--> |127.0.0.1:5432| postgresql
 ```
-
-
 
 # Вывод
 
