@@ -1,16 +1,10 @@
 ```mermaid
 graph TB
-    user(root, dba) -->|ssh.cloud.nstu.ru:5980| OCAlmaLinux9.4
-    user(root, dba) <-->|http://217.71.129.139:4775/browser/| Nginx
-    
-    
-    Client -->|HTTP запросы<br/>GET/POST/PUT/DELETE| Backend
-    Backend -->|SQL запросы| Postgres
-    Postgres -->|результаты| Backend
-    Backend -->|JSON ответы| Client
-    
-    style Client fill:#e1f5ff
-    style Backend fill:#fff3e0
-    style Postgres fill:#f3e5f5
-    style Compose fill:#f0f0f0,stroke:#999,stroke-width:2px
+    user -->|ssh.cloud.nstu.ru:5980| OCAlmaLinux9.4
+    user <-->|http://217.71.129.139:4775/browser/| Nginx
+    OCAlmaLinux9.4 <--> Nginx
+    OCAlmaLinux9.4 <--> pgAdmin4
+    OCAlmaLinux9.4 <--> postgresql
+    Nginx <--> || pgAdmin4
+    pgAdmin4 <--> || postgresql
 ```
