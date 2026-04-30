@@ -1,13 +1,8 @@
 ```mermaid
 graph TB
-    Client["Web Browser<br/>http://localhost:8000"]
+    user (root, dba) -->|ssh.cloud.nstu.ru:5980| OC AlmaLinux 9.4
+    user (root, dba) <-->|http://217.71.129.139:4775/browser/| Nginx
     
-    subgraph VM["ВМ на облачной платформе cloud.nstu.ru"]
-        subgraph Compose[" docker-compose"]
-            Backend[" Backend приложение<br/>(Python FastAPI / Node.js Express)"]
-            Postgres[" PostgreSQL 18<br/>port 5432"]
-        end
-    end
     
     Client -->|HTTP запросы<br/>GET/POST/PUT/DELETE| Backend
     Backend -->|SQL запросы| Postgres
