@@ -5,6 +5,6 @@ graph TB
     user <-->|http://217.71.129.139:4775/browser/| Nginx
     OCAlmaLinux9.4 <--> pgAdmin4
     OCAlmaLinux9.4 <--> postgresql
-    Nginx <--> |aa| pgAdmin4
-    pgAdmin4 <--> |aa| postgresql
+    Nginx <--> |127.0.0.1:5050| pgAdmin4
+    pgAdmin4 <--> |127.0.0.1:5432| postgresql
 ```
