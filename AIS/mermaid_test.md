@@ -5,6 +5,6 @@ graph TB
     OCAlmaLinux9.4 <--> Nginx
     OCAlmaLinux9.4 <--> pgAdmin4
     OCAlmaLinux9.4 <--> postgresql
-    Nginx <--> || pgAdmin4
-    pgAdmin4 <--> || postgresql
+    Nginx <--> |aa| pgAdmin4
+    pgAdmin4 <--> |aa| postgresql
 ```
